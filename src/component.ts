@@ -1,13 +1,13 @@
 import {
   Application,
-  injectable,
   Component,
-  config,
   ContextTags,
   CoreBindings,
+  config,
   inject,
+  injectable,
 } from '@loopback/core';
-import {LoopbackRestCacheComponentBindings} from './keys'
+import {LoopbackRestCacheComponentBindings} from './keys';
 import {DEFAULT_LOOPBACK_REST_CACHE_OPTIONS, LoopbackRestCacheComponentOptions} from './types';
 
 // Configure the binding for LoopbackRestCacheComponent
@@ -18,5 +18,5 @@ export class LoopbackRestCacheComponent implements Component {
     private application: Application,
     @config()
     private options: LoopbackRestCacheComponentOptions = DEFAULT_LOOPBACK_REST_CACHE_OPTIONS,
-  ) {}
+  ) { }
 }

@@ -1,15 +1,21 @@
-/**
-* Interface defining the component's options object
-*/
-export interface LoopbackRestCacheComponentOptions {
-  // Add the definitions here
+import {Request} from '@loopback/rest';
 
+export interface CacheCheckFn {
+  (request: Request): Promise<Cache | undefined>;
 }
 
-/**
-* Default options for the component
-*/
-export const DEFAULT_LOOPBACK_REST_CACHE_OPTIONS: LoopbackRestCacheComponentOptions = {
-  // Specify the values here
+export interface CacheSetFn {
+  (request: Request, result: any): Promise<void>;
+}
 
-};
+export interface CacheStrategy {
+  check(key: string): Promise<Cache | undefined>;
+  set(path: string, result: any): Promise<void>;
+}
+
+export interface Cache {
+  id: string;
+  data: any;
+  ttl: number;
+}
+
